@@ -9,5 +9,14 @@ public class Receipt {
     public void add(Product product){
         productList.add(product);
     }
-    
+
+    @Override
+    public String toString() {
+        StringBuilder builder=new StringBuilder();
+        for (Product product: productList
+             ) {
+            builder.append(product.toString());
+        }
+        return builder.toString();
+    }
 }
