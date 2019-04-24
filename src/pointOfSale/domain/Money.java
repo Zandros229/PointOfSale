@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Money {
     private Double amount;
-    private String courency;
+    private Currency courency;
 
-    public Money(Double amount, String courency) {
+    public Money(Double amount, Currency courency) {
         this.amount = amount;
         this.courency = courency;
     }
@@ -15,7 +15,7 @@ public class Money {
         return amount;
     }
 
-    public String getCourency() {
+    public Currency getCourency() {
         return courency;
     }
 
@@ -28,4 +28,11 @@ public class Money {
                 Objects.equals(getCourency(), money.getCourency());
     }
 
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public void setCourency(Currency courency) {
+        this.courency = courency;
+    }
 }

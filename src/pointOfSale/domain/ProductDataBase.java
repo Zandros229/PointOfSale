@@ -26,6 +26,6 @@ public class ProductDataBase {
         if(contains(id))
             return productMap.get(id);
         else
-            throw new InvalidIdException("Wrong Id");
+            throw new InvalidIdException("Product not found");
     }
 }

@@ -13,4 +13,12 @@ public class Product {
     public String toString() {
         return  name +" price=" + price;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
 }

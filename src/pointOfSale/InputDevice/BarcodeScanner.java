@@ -9,7 +9,7 @@ public class BarcodeScanner {
             return barCodeToId();
         }
         else
-            throw new InvalidBarcodeException("Empty Barcode");
+            throw new InvalidBarcodeException("Invalid bar-code");
     }
 
     private int barCodeToId(){
