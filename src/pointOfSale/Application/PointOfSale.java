@@ -9,43 +9,49 @@ import pointOfSale.domain.Receipt;
 import pointOfSale.outputDevice.LCDDisplay;
 import pointOfSale.outputDevice.Printer;
 
-public class pointOfSale {
+import java.util.LinkedList;
+
+public class PointOfSale {
     private BarcodeScanner barcodeScanner;
     private LCDDisplay lcdDisplay;
     private Printer printer;
     private ProductDataBase productDataBase;
     private Receipt receipt;
 
-    public pointOfSale(BarcodeScanner barcodeScanner, LCDDisplay lcdDisplay, Printer printer, ProductDataBase productDataBase) {
+    public PointOfSale(BarcodeScanner barcodeScanner, LCDDisplay lcdDisplay, Printer printer, ProductDataBase productDataBase) {
         this.barcodeScanner = barcodeScanner;
         this.lcdDisplay = lcdDisplay;
         this.printer = printer;
         this.productDataBase = productDataBase;
+        receipt = new Receipt(new LinkedList<Product>());
     }
 
     public void scan(String code) {
         try {
-            if(!(code.equals("exit")))
-                barcodeScanner.scan(code);
-            else
+            if (!(code.equals("exit"))) {
+                checkProduct(barcodeScanner.scan(code));
+            } else
                 printreceipt();
         } catch (InvalidBarcodeException e) {
             lcdDisplay.display(e.getMessage());
         }
     }
 
-    public void checkProduct(int code){
+    public void checkProduct(int code) {
         try {
-            if (productDataBase.contains(code))
+            if (productDataBase.contains(code)) {
                 receipt.add(productDataBase.getProduct(code));
-            else
+                lcdDisplay.display(productDataBase.getProduct(code).toString());
+            } else
                 lcdDisplay.display("Product not found");
-        }catch (InvalidIdException e){
+        } catch (InvalidIdException e) {
             lcdDisplay.display(e.getMessage());//Should never happened
         }
     }
-    private void printreceipt(){
-        lcdDisplay.display(receipt.getTotalSum().getAmount()+" "+receipt.getTotalSum().getCourency());
+
+    private void printreceipt() {
+        lcdDisplay.display(receipt.getTotalSum().getAmount() + " " + receipt.getTotalSum().getCourency());
+        printer.print(receipt.toString());
     }
 
 }

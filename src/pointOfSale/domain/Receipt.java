@@ -9,8 +9,7 @@ public class Receipt {
 
     public Receipt(List<Product> productList) {
         this.productList = productList;
-        this.totalSum.setAmount(0.0);
-        this.totalSum.setCourency(Currency.PLN);
+        this.totalSum=new Money(0.0,Currency.PLN);
     }
 
     public void add(Product product){
