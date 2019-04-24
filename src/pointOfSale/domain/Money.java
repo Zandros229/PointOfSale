@@ -27,5 +27,5 @@ public class Money {
         return Objects.equals(getAmount(), money.getAmount()) &&
                 Objects.equals(getCourency(), money.getCourency());
     }
-    
+
 }
