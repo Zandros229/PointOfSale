@@ -11,4 +11,8 @@ public class LCDDisplay {
         text=textToDisplay;
         System.out.println(textToDisplay);
     }
+
+    public String getText() {
+        return text;
+    }
 }

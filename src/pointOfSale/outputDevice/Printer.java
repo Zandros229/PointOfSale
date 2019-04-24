@@ -10,4 +10,8 @@ public class Printer {
     public void  print(String textToPrint){
         text=textToPrint;
     }
+
+    public String getText() {
+        return text;
+    }
 }
