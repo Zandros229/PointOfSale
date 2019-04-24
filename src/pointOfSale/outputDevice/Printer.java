@@ -4,11 +4,11 @@ public class Printer {
     private String text;
 
     public Printer() {
-        text="";
+        text = "";
     }
 
-    public void  print(String textToPrint){
-        text=textToPrint;
+    public void print(String textToPrint) {
+        text = textToPrint;
     }
 
     public String getText() {

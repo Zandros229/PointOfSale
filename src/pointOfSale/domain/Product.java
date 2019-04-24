@@ -13,7 +13,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return  name +" price=" + price.getAmount()+" "+price.getCourency();
+        return name + " price=" + price.getAmount() + " " + price.getCourency();
     }
 
     public String getName() {

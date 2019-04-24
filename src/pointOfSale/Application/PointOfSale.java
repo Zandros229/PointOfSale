@@ -52,6 +52,7 @@ public class PointOfSale {
     private void printreceipt() {
         lcdDisplay.display(receipt.getTotalSum().getAmount() + " " + receipt.getTotalSum().getCourency());
         printer.print(receipt.toString());
+        receipt = new Receipt(new LinkedList<Product>());
     }
 
 }
